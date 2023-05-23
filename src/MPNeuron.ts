@@ -1,4 +1,4 @@
-import { accuracy_score } from "./accudaryScore";
+import { accuracyScore } from "./accuracyScore";
 
 export class MPNeuron {
   private threshold: number;
@@ -17,7 +17,7 @@ export class MPNeuron {
     inputs.forEach((_, index) => {
       this.threshold = index;
       const prediction = inputs.map((input) => this.predict(input));
-      accuracy[index] = accuracy_score(targets, prediction);
+      accuracy[index] = accuracyScore(targets, prediction);
     });
     const maxAccuracy = Math.max(...accuracy);
     this.threshold = accuracy.indexOf(maxAccuracy);
