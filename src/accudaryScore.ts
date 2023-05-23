@@ -1,6 +1,6 @@
 export const accuracy_score = (y_target: number[], y_pred: number[]) => {
-  var correct = 0;
-  for (var i = 0; i < y_target.length; i++) {
+  let correct = 0;
+  for (let i = 0; i < y_target.length; i++) {
     if (y_target[i] === y_pred[i]) {
       correct++;
     }

@@ -10,7 +10,7 @@ const init = async () => {
 
   const { train, test } = cutArray(binaryData, data.target, 0.7);
 
-  const neuron = new MPNeuron(1);
+  const neuron = new MPNeuron(0);
   neuron.fit(train.data, train.target);
 
   const result = test.data.map((item) => neuron.predict(item));
