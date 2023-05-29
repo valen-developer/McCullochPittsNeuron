@@ -1,7 +1,7 @@
 import { accuracyScore } from "./accuracyScore";
 
 export class MPNeuron {
-  private threshold: number;
+  threshold: number;
 
   constructor(threshold: number) {
     this.threshold = threshold;
