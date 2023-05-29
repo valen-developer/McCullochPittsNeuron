@@ -21,16 +21,30 @@ interface BreastCancerData {
   rows: Row[];
 }
 
-const huggingFaceDataUrl =
-  "https://datasets-server.huggingface.co/rows?dataset=mstz%2Fbreast&config=cancer&split=train&offset=0&limit=100";
+const huggingFaceDataUrl = (page: number) =>
+  `https://datasets-server.huggingface.co/rows?dataset=mstz%2Fbreast&config=cancer&split=train&offset=${
+    (page + 1) * 100
+  }&limit=100`;
 
 export const getBreastCancerData = async (): Promise<{
   train: number[][];
   target: number[];
 }> => {
-  const response = await axios.get<BreastCancerData>(huggingFaceDataUrl);
+  const pages = 7;
+  const rows = await Promise.all(
+    new Array(pages)
+      .fill(0)
+      .map(
+        async (_, index) =>
+          await axios
+            .get<BreastCancerData>(huggingFaceDataUrl(index))
+            .then((r) => r.data)
+      )
+  ).then((responses) =>
+    responses.reduce((acc: Row[], response) => [...acc, ...response.rows], [])
+  );
 
-  return getTrainingData(response.data.rows);
+  return getTrainingData(rows);
 };
 
 const getTrainingData = (
