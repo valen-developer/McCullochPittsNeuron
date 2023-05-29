@@ -11,13 +11,13 @@ interface CutArrayResult {
 export const cutArray = (
   array: number[][],
   target: number[],
-  percentage: number
+  percentageForTest: number
 ): CutArrayResult => {
-  if (percentage < 0 || percentage > 1) {
+  if (percentageForTest < 0 || percentageForTest > 1) {
     throw new Error("Percentage must be between 0 and 1");
   }
 
-  const testLength = Math.round(array.length * percentage);
+  const testLength = Math.round(array.length * percentageForTest);
   const trainLength = array.length - testLength;
 
   const trainData = array.slice(0, trainLength);
