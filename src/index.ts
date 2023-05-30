@@ -4,11 +4,13 @@ import { cutArray } from "./cutArray";
 import { getBreastCancerData } from "./getBreastCancerData";
 import { transformToBinary } from "./transformToBinary";
 
+const TEST_PERCENTAGE = 0.5;
+
 const init = async () => {
   const data = await getBreastCancerData();
   const binaryData = transformToBinary(data.train);
 
-  const { train, test } = cutArray(binaryData, data.target, 0.5);
+  const { train, test } = cutArray(binaryData, data.target, TEST_PERCENTAGE);
 
   const neuron = new MPNeuron(0);
   neuron.fit(train.data, train.target);
