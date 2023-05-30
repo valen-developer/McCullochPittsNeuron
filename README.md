@@ -1,7 +1,7 @@
 # McCulloch & Pitts Neuron
 
 
-Project that complements the article [McCulloch & Pitts Neuron](https://medium.com/@josephcardona/mcculloch-pitts-neuron-2e0b5d8df4d0) where we developed a McCulloch and Pitts neuron with a training method that adjusts the threshold. Developed using TypeScript as the programming language.
+Project that complements the article [McCulloch & Pitts Neuron](https://www.adictosaltrabajo.com/2023/05/30/mcculloch-y-pitts-la-pareja-que-encendio-la-chispa-neuronal/) where we developed a McCulloch and Pitts neuron with a training method that adjusts the threshold. Developed using TypeScript as the programming language.
 
 ## Installation
 
