@@ -40,9 +40,13 @@ export const getBreastCancerData = async (): Promise<{
             .get<BreastCancerData>(huggingFaceDataUrl(index))
             .then((r) => r.data)
       )
-  ).then((responses) =>
-    responses.reduce((acc: Row[], response) => [...acc, ...response.rows], [])
-  );
+  )
+    .then((responses) =>
+      responses.reduce((acc: Row[], response) => [...acc, ...response.rows], [])
+    )
+    .then((rows) => {
+      return rows.sort(() => (Math.random() > 0.5 ? 1 : -1));
+    });
 
   return getTrainingData(rows);
 };
